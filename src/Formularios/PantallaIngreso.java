@@ -3,31 +3,27 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Formularios;
-import Formularios.FrmRegistros;
+import Formularios.Registrarse;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
 import com.mysql.jdbc.Statement;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import tarea4_2.ConexionSQL;
+import Conexion.Bd_conexion;
 import java.sql.ResultSet;
 
 
 
-/**
- *
- * @author robin
- */
-public class FrmPanel extends javax.swing.JFrame {
+public class PantallaIngreso extends javax.swing.JFrame {
     
     
-        ConexionSQL cc=new ConexionSQL();
+        Bd_conexion cc=new Bd_conexion();
         Connection con=cc.conexion();
 
     /**
      * Creates new form Panel
      */
-    public FrmPanel() {
+    public PantallaIngreso() {
         initComponents();
         
         this.setLocationRelativeTo(null);
@@ -316,8 +312,48 @@ public class FrmPanel extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    
+    public void eliminarRegistros(){
+        
+        int filaSeleccionada=tablaUsuarios.getSelectedRow();
+            
+        
+        try {
+            
+            String SQL="delete from usuarios where id="+tablaUsuarios.getValueAt(filaSeleccionada,0);
+            Statement st=(Statement) con.createStatement();
+            int n=st.executeUpdate(SQL);
+            
+            if(n<=0){
+            
+                JOptionPane.showMessageDialog(null,"Registro eliminado");
+            
+            }
+        } catch (Exception e) {
+            
+                            JOptionPane.showMessageDialog(null,"Registro eliminado" + e.getMessage());
+        }
+        }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        // TODO add your handling code here:
+
+
+    eliminarRegistros();
+    mostrarDatos();
+    // TODO add your handling code here:
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
@@ -407,11 +443,6 @@ public class FrmPanel extends javax.swing.JFrame {
     
     }
     
-    
-    
-    
-    
-    
     public void mostrarDatos(){
     
     String [] titulos= {"ID","Nombre","Usuario","Apellido","Telefono","Correo","Contra"};
@@ -454,15 +485,7 @@ public class FrmPanel extends javax.swing.JFrame {
         }
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
+   
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
 
         insertarDatos();
@@ -484,8 +507,6 @@ public class FrmPanel extends javax.swing.JFrame {
 
 
 
-
-
         // TODO add your handling code here:
     }//GEN-LAST:event_tablaUsuariosMouseClicked
 
@@ -495,31 +516,14 @@ public class FrmPanel extends javax.swing.JFrame {
         
 
 
-
-
         // TODO add your handling code here:
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-
-
-            FrmLogin FrmLogin=new FrmLogin();
+            Login FrmLogin=new Login();
             FrmLogin.setVisible(true);
             dispose();
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -541,21 +545,23 @@ public class FrmPanel extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PantallaIngreso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PantallaIngreso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PantallaIngreso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PantallaIngreso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmPanel().setVisible(true);
+                new PantallaIngreso().setVisible(true);
             }
         });
     }

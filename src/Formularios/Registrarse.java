@@ -7,24 +7,20 @@ package Formularios;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
 import javax.swing.JOptionPane;
-import tarea4_2.ConexionSQL;
+import Conexion.Bd_conexion;
 
 
-/**
- *
- * @author robin
- */
-public class FrmRegistros extends javax.swing.JFrame {
+public class Registrarse extends javax.swing.JFrame {
     
 
-    ConexionSQL cc=new ConexionSQL();
+    Bd_conexion cc=new Bd_conexion();
     Connection con=cc.conexion();
     
 
     /**
      * Creates new form Login
      */
-    public FrmRegistros() {
+    public Registrarse() {
         initComponents();
         
         this.setLocationRelativeTo(null);
@@ -56,7 +52,6 @@ public class FrmRegistros extends javax.swing.JFrame {
         Jcontra = new javax.swing.JPasswordField();
         Jrepetircontra = new javax.swing.JPasswordField();
         btnNuevo = new javax.swing.JButton();
-        Volver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -125,14 +120,6 @@ public class FrmRegistros extends javax.swing.JFrame {
         });
         jPanel1.add(btnNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 360, 186, 46));
 
-        Volver.setText("Volver");
-        Volver.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                VolverActionPerformed(evt);
-            }
-        });
-        jPanel1.add(Volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 440, -1, -1));
-
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 950, 500));
 
         pack();
@@ -145,30 +132,13 @@ public class FrmRegistros extends javax.swing.JFrame {
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
 
         insertarDatos();
-
-
-
-        
-        
-        
-        
-
+     
         // TODO add your handling code here:
     }//GEN-LAST:event_btnNuevoActionPerformed
 
     private void txtApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApellidoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtApellidoActionPerformed
-
-    private void VolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolverActionPerformed
-
-
-
-
-            FrmLogin FrmLogin=new FrmLogin();
-            FrmLogin.setVisible(true);
-            dispose();        // TODO add your handling code here:
-    }//GEN-LAST:event_VolverActionPerformed
     
     
     public void insertarDatos(){
@@ -197,7 +167,10 @@ public class FrmRegistros extends javax.swing.JFrame {
         
         pst.execute();
         JOptionPane.showMessageDialog(null, "Registro Exitoso");
-        
+
+            Login FrmLogin=new Login();
+            FrmLogin.setVisible(true);
+            dispose();      
     }catch (Exception e){
           JOptionPane.showMessageDialog(null, "Error de registro" + e.getMessage());
     
@@ -234,21 +207,23 @@ public class FrmRegistros extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmRegistros.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Registrarse.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmRegistros.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Registrarse.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmRegistros.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Registrarse.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmRegistros.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Registrarse.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmRegistros().setVisible(true);
+                new Registrarse().setVisible(true);
             }
         });
     }
@@ -256,7 +231,6 @@ public class FrmRegistros extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPasswordField Jcontra;
     private javax.swing.JPasswordField Jrepetircontra;
-    private javax.swing.JButton Volver;
     private javax.swing.JButton btnNuevo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
