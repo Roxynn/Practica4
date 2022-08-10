@@ -108,7 +108,7 @@ public class Registrarse extends javax.swing.JFrame {
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("REGISTRAR");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(231, 20, 503, 35));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 30, 503, 35));
         jPanel1.add(Jcontra, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 240, 150, 30));
         jPanel1.add(Jrepetircontra, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 240, 170, 30));
 
