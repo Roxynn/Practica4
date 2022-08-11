@@ -11,7 +11,7 @@ el usuario accede ingresando una contraseña y un usuario ya registrado se cierr
 ventana de login y se muestra una ventana diferente con un listado de todos los 
 usuarios registrados, sus nombres, número de teléfono y correo electrónico.
 
-# REQUISITOS DESEADOS POR EL MAESTRO
+# REQUISITOS
 • Si se presiona un botón de iniciar sección y alguno de los campos no está 
 lleno me muestra un mensaje de error indicando “debe ingresar su usuario 
 y contraseña, si no está registrado debe registrarse”.
